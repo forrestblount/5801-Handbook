@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome Book – 5801 Bagshotte Drive</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sage: #9DB4A5;
+    --sage-light: #B8CCBF;
+    --sage-bg: #C5D5CB;
+    --slate: #5A6B6E;
+    --mauve: #9E7B80;
+    --mauve-light: #C4A0A5;
+    --charcoal: #3A3A3A;
+    --warm-white: #F8F6F3;
+    --cream: #F0EDE8;
+    --text: #444444;
+    --text-light: #6B6B6B;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+  }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    color: var(--text);
+    background: var(--warm-white);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Navigation ── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(248, 246, 243, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    transition: transform 0.3s ease;
+  }
+  nav .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  nav .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    letter-spacing: 0.02em;
+  }
+  nav .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+  nav .nav-links a {
+    text-decoration: none;
+    color: var(--text-light);
+    font-size: 0.82rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  nav .nav-links a:hover { color: var(--charcoal); }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .hamburger span {
+    width: 22px;
+    height: 2px;
+    background: var(--charcoal);
+    transition: 0.3s;
+  }
+
+  /* ── Section Utility ── */
+  section { position: relative; }
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .section-label {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 10px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--sage-bg);
+    overflow: hidden;
+  }
+  .hero-top {
+    padding: 100px 0 30px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--warm-white);
+    letter-spacing: 0.05em;
+    opacity: 0.9;
+    margin-bottom: 10px;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    font-weight: 700;
+    font-style: italic;
+    color: #fff;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .hero-card {
+    position: relative;
+    z-index: 2;
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 32px 36px;
+    background: #fff;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+  }
+  .hero-card h2 {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    margin-bottom: 16px;
+  }
+  .hero-card p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--text);
+    line-height: 1.8;
+  }
+  .hero-oakland {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    color: #fff;
+    opacity: 0.85;
+    position: relative;
+    z-index: 2;
+    margin: 20px 0 0 24px;
+  }
+  .hero-image {
+    width: 100%;
+    margin-top: auto;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-image img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Stats bar */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px dotted #ccc;
+    border-bottom: 1px dotted #ccc;
+    padding: 24px 0;
+    margin: 0 auto;
+    max-width: 1100px;
+  }
+  .stat-item .stat-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 4px;
+  }
+  .stat-item .stat-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--charcoal);
+  }
+
+  /* About the Space */
+  .about-space {
+    padding: 50px 24px 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .about-space h3 {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  .amenities-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 48px;
+  }
+  .amenity {
+    font-size: 0.95rem;
+    color: var(--text);
+    padding-left: 18px;
+    position: relative;
+  }
+  .amenity::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--sage);
+  }
+
+  /* ── ABOUT US ── */
+  .about-us {
+    background: var(--warm-white);
+    padding-top: 0;
+  }
+  .about-header {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+  }
+  .about-header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7);
+  }
+  .about-header h2 {
+    position: absolute;
+    bottom: 20px;
+    left: 40px;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+  }
+  .about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    padding: 50px 0 40px;
+  }
+  .about-text p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+  .about-signature {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    color: var(--charcoal);
+    margin-top: 12px;
+  }
+  .contact-box {
+    background: var(--sage-bg);
+    padding: 28px 32px;
+    height: fit-content;
+  }
+  .contact-box h4 {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--slate);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .contact-row {
+    margin-bottom: 18px;
+  }
+  .contact-row .label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--slate);
+    margin-bottom: 4px;
+  }
+  .contact-row .value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--charcoal);
+  }
+  .contact-row .value a {
+    color: var(--charcoal);
+    text-decoration: none;
+  }
+  .contact-row .value a:hover { text-decoration: underline; }
+  .emergency-box {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+  }
+  .emergency-box .label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--slate);
+    margin-bottom: 6px;
+  }
+  .emergency-box p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--charcoal);
+    line-height: 1.7;
+  }
+  .host-badges {
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+  }
+  .badge {
+    font-size: 0.85rem;
+    color: var(--text);
+    padding-left: 16px;
+    position: relative;
+  }
+  .badge::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--sage);
+  }
+  .about-photos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    margin-top: 40px;
+  }
+  .about-photos img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  /* ── CHECK IN / HOUSE RULES ── */
+  .checkin-section {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    min-height: 100vh;
+  }
+  .checkin-sidebar {
+    width: 200px;
+    position: relative;
+    overflow: hidden;
+  }
+  .checkin-sidebar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .checkin-main {
+    padding: 60px 48px 60px;
+  }
+  .rules-box {
+    background: var(--mauve);
+    color: #fff;
+    padding: 28px 36px;
+    margin-bottom: 50px;
+  }
+  .rules-box h3 {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    text-align: center;
+  }
+  .rules-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 40px;
+  }
+  .rule-item {
+    font-size: 0.9rem;
+    padding-left: 16px;
+    position: relative;
+  }
+  .rule-item::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+  }
+  .checkin-block {
+    margin-bottom: 50px;
+  }
+  .checkin-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    font-style: italic;
+    color: var(--charcoal);
+    margin-bottom: 20px;
+  }
+  .checkin-block p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text);
+    max-width: 560px;
+  }
+  .address-badge {
+    display: inline-block;
+    background: var(--mauve);
+    color: #fff;
+    padding: 14px 28px;
+    margin-top: 16px;
+    text-align: center;
+  }
+  .address-badge .ab-label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .address-badge .ab-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  .checkin-divider {
+    border: none;
+    border-top: 1px dotted #ccc;
+    margin: 0 0 50px;
+  }
+
+  /* ── THINGS TO DO ── */
+  .things-section {
+    padding: 70px 0;
+  }
+  .things-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 40px;
+  }
+  .things-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 700;
+    font-style: italic;
+    color: var(--charcoal);
+  }
+  .things-header .region {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--text-light);
+  }
+  .activity-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+    margin-bottom: 40px;
+    align-items: start;
+  }
+  .activity-card.reverse { direction: rtl; }
+  .activity-card.reverse > * { direction: ltr; }
+  .activity-text h3 {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    margin-bottom: 14px;
+  }
+  .activity-text p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text);
+  }
+  .activity-img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+  }
+
+  /* Food section */
+  .food-section {
+    background: var(--mauve-light);
+    padding: 40px 0;
+    text-align: center;
+  }
+  .food-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    font-style: italic;
+    color: #fff;
+    margin-bottom: 24px;
+  }
+  .food-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 60px;
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .food-item {
+    font-size: 0.95rem;
+    color: #fff;
+    padding-left: 16px;
+    position: relative;
+  }
+  .food-item::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+  }
+
+  /* ── FIREPLACE ── */
+  .fireplace-section {
+    padding: 70px 0 60px;
+  }
+  .fireplace-section .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 700;
+    font-style: italic;
+    color: var(--charcoal);
+    margin-bottom: 30px;
+  }
+  .usage-box {
+    background: var(--mauve);
+    color: #fff;
+    padding: 24px 36px;
+    margin-bottom: 44px;
+  }
+  .usage-box h3 {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  .usage-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.95rem;
+  }
+  .fireplace-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 36px;
+  }
+  .fire-card h4 {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    margin-bottom: 14px;
+  }
+  .fire-card p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text);
+  }
+
+  /* ── ESPRESSO ── */
+  .espresso-section {
+    padding: 70px 0;
+    background: var(--cream);
+  }
+  .espresso-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+  }
+  .espresso-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 700;
+    font-style: italic;
+    color: var(--charcoal);
+  }
+  .espresso-header .machine-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--text-light);
+  }
+  .bilt-notice {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 14px 20px;
+    font-size: 0.9rem;
+    color: var(--text);
+    margin-bottom: 36px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .bilt-notice img { width: 60px; height: auto; }
+  .espresso-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .good-morning {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.4rem;
+    color: var(--charcoal);
+    margin-bottom: 20px;
+  }
+  .daily-steps h4 {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    margin-bottom: 14px;
+  }
+  .daily-steps ol {
+    padding-left: 20px;
+  }
+  .daily-steps li {
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    line-height: 1.6;
+  }
+
+  .maintenance-section {
+    padding-top: 50px;
+  }
+  .maintenance-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    font-style: italic;
+    color: var(--charcoal);
+    margin-bottom: 30px;
+  }
+  .maint-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .maint-card h4 {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    margin-bottom: 14px;
+  }
+  .maint-card ol {
+    padding-left: 18px;
+  }
+  .maint-card li {
+    font-size: 0.92rem;
+    margin-bottom: 8px;
+    line-height: 1.6;
+  }
+
+  /* ── THANK YOU ── */
+  .thankyou-section {
+    padding: 70px 0 0;
+  }
+  .thankyou-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    font-style: italic;
+    color: var(--charcoal);
+    margin-bottom: 24px;
+  }
+  .thankyou-text {
+    max-width: 800px;
+  }
+  .thankyou-text p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: var(--text);
+    margin-bottom: 18px;
+  }
+  .thankyou-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 40px;
+    align-items: end;
+    margin-top: 30px;
+  }
+  .thankyou-grid img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+  }
+
+  .feedback-section {
+    background: var(--cream);
+    padding: 50px 0 60px;
+    margin-top: 50px;
+  }
+  .feedback-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 20px;
+  }
+  .feedback-section p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text);
+    max-width: 720px;
+  }
+  .feedback-section a {
+    color: var(--charcoal);
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 768px) {
+    nav .nav-links { display: none; }
+    nav .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: rgba(248,246,243,0.98);
+      padding: 20px 24px;
+      gap: 16px;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .hamburger { display: flex; }
+
+    .stats-bar {
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      padding: 24px;
+    }
+    .amenities-grid { grid-template-columns: 1fr; }
+    .about-content { grid-template-columns: 1fr; gap: 30px; }
+    .about-photos img { height: 140px; }
+    .checkin-section { grid-template-columns: 1fr; }
+    .checkin-sidebar { display: none; }
+    .checkin-main { padding: 40px 24px; }
+    .rules-grid { grid-template-columns: 1fr; }
+    .activity-card { grid-template-columns: 1fr; }
+    .activity-card.reverse { direction: ltr; }
+    .activity-img { height: 200px; }
+    .food-grid { grid-template-columns: 1fr; max-width: 260px; }
+    .fireplace-grid { grid-template-columns: 1fr; }
+    .espresso-content { grid-template-columns: 1fr; }
+    .maint-grid { grid-template-columns: 1fr; }
+    .thankyou-grid { grid-template-columns: 1fr; }
+    .hero-card { margin: 0 16px; padding: 24px; }
+  }
+
+  /* Smooth fade-in animations */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-brand">5801 Bagshotte</div>
+    <div class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#welcome">Welcome</a></li>
+      <li><a href="#about-us">About</a></li>
+      <li><a href="#checkin">Stay Info</a></li>
+      <li><a href="#things-oakland">Explore</a></li>
+      <li><a href="#fireplace">Fireplace</a></li>
+      <li><a href="#espresso">Espresso</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ════════════ PAGE 1: WELCOME ════════════ -->
+<section class="hero" id="welcome">
+  <div class="hero-top">
+    <p class="hero-subtitle">— Piedmont Pines, Oakland</p>
+    <h1 class="hero-title">Welcome</h1>
+  </div>
+
+  <div style="display:flex;align-items:start;gap:0;padding:0 24px;position:relative;z-index:2;max-width:1100px;margin:0 auto;width:100%;">
+    <div style="flex:1;">
+      <div class="hero-card">
+        <h2>5801 Bagshotte Drive</h2>
+        <p>Thank you for choosing 5801 Bagshotte Drive for your stay. We've prepared this guide to help you enjoy all amenities. Enjoy your time in the beautiful Oakland Hills!</p>
+      </div>
+      <div class="hero-oakland">Oakland</div>
+    </div>
+    <div style="flex:0 0 40%;background:var(--slate);height:200px;display:none;"></div>
+  </div>
+
+  <div class="hero-image">
+    <img src="images/hero-view.jpg" alt="Panoramic Oakland Hills views from the deck">
+  </div>
+</section>
+
+<div class="container">
+  <div class="stats-bar fade-in">
+    <div class="stat-item">
+      <div class="stat-label">Location</div>
+      <div class="stat-value">Oakland</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-label"># of Guests</div>
+      <div class="stat-value">8</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-label">Bedrooms</div>
+      <div class="stat-value">Four</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-label">Bathrooms</div>
+      <div class="stat-value">Three</div>
+    </div>
+  </div>
+
+  <div class="about-space fade-in">
+    <h3>About the Space</h3>
+    <div class="amenities-grid">
+      <div class="amenity">Panoramic Oakland Hills Views</div>
+      <div class="amenity">High Speed 500 mbps fiber WiFi</div>
+      <div class="amenity">Breville Barista Express Espresso Machine</div>
+      <div class="amenity">Wood-Burning Fireplace</div>
+      <div class="amenity">4K LED high-definition TV</div>
+      <div class="amenity">Off-Street Parking (3 Driveway Spots)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════ PAGE 2: ABOUT US ════════════ -->
+<section class="about-us" id="about-us">
+  <div class="about-header">
+    <img src="images/house-front.jpg" alt="5801 Bagshotte Drive exterior at dusk">
+    <h2>About us</h2>
+  </div>
+  <div class="container">
+    <div class="about-content fade-in">
+      <div class="about-text">
+        <p>Welcome home, at least for a little while!</p>
+        <p>When we first walked through this house in 2021, we knew right away it was something special. The orchard out back, the way inside and outside flow into one another, the charm and character of it all... we fell completely in love.</p>
+        <p>We always imagined this as our forever home, but in 2024 our work called us north to Seattle. Rather than let this place sit empty, we decided to share it with people like you.</p>
+        <p>Wander through the orchard, enjoy the outdoor spaces, and make yourself at home. If you need anything or have suggestions for future guests, reach out through the Airbnb app and we'll get back to you quickly.</p>
+        <p>Thank you for being here.</p>
+        <div class="about-signature">Forrest</div>
+      </div>
+      <div>
+        <div class="contact-box">
+          <h4>Contact Information</h4>
+          <div class="contact-row">
+            <div class="label">Email</div>
+            <div class="value"><a href="mailto:forrest@5801bagshotte.com">forrest@5801bagshotte.com</a></div>
+          </div>
+          <div class="contact-row">
+            <div class="label">Phone</div>
+            <div class="value"><a href="tel:6179437297">617-943-7297</a></div>
+          </div>
+          <div class="emergency-box">
+            <div class="label">Emergency Info</div>
+            <p>Closest hospital:<br>Highland Hospital Oakland<br>1411 E 31st St, Oakland, CA 94602</p>
+            <p style="margin-top:8px;">Non-Emergency Police: 510-238-3456</p>
+          </div>
+        </div>
+        <div class="host-badges">
+          <span class="badge">Superhost</span>
+          <span class="badge">200+ Reviews</span>
+          <span class="badge">Response time: 1 hour</span>
+          <span class="badge">Verified</span>
+          <span class="badge">Response rate: 100%</span>
+        </div>
+      </div>
+    </div>
+    <div class="about-photos fade-in">
+      <img src="images/living-room.jpg" alt="Living room with fireplace and blue rug">
+      <img src="images/exterior.jpg" alt="Home exterior and brick patio">
+      <img src="images/kitchen.jpg" alt="Warm wood kitchen">
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ PAGE 3: CHECK IN / RULES ════════════ -->
+<section class="checkin-section" id="checkin">
+  <div class="checkin-sidebar">
+    <img src="images/brick-path.jpg" alt="Brick pathway through garden">
+  </div>
+  <div class="checkin-main">
+    <div class="rules-box fade-in">
+      <h3>House Rules</h3>
+      <div class="rules-grid">
+        <div class="rule-item">No smoking inside the home</div>
+        <div class="rule-item">Quiet hours: 10pm – 8am</div>
+        <div class="rule-item">No loud noise or parties</div>
+        <div class="rule-item">Maximum occupancy of 10</div>
+      </div>
+    </div>
+
+    <div class="checkin-block fade-in">
+      <h2>Check in</h2>
+      <div style="display:flex;gap:36px;align-items:start;flex-wrap:wrap;">
+        <p style="flex:1;min-width:260px;">Check in time is any time after 3pm. Please message or communicate with us if you are going to arrive earlier and we may be able to accommodate you.</p>
+        <div class="address-badge">
+          <div class="ab-label">Address</div>
+          <div class="ab-value">5801 Bagshotte Drive<br>Oakland, CA 94611</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="checkin-divider">
+
+    <div class="checkin-block fade-in">
+      <h2>Check out</h2>
+      <p>Check out is prior to 11am. We will do our best to accommodate late checkouts based on availability, please check as early as possible. No need to clean after you leave (that's what the cleaning fee is for!), but if you damage the home in any way, you will be asked to cover replacement fees.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ PAGE 4: THINGS TO DO – OAKLAND ════════════ -->
+<section class="things-section" id="things-oakland">
+  <div class="container">
+    <div class="things-header fade-in">
+      <h2>Things to do</h2>
+      <span class="region">— Oakland</span>
+    </div>
+
+    <div class="activity-card fade-in">
+      <div class="activity-text">
+        <h3>Joaquin Miller Park</h3>
+        <p>Known locally as "JMP," Joaquin Miller Park is a sprawling 500-acre urban wilderness in the Oakland hills that offers a perfect escape into nature without leaving the city. The park is named after the "Poet of the Sierras" and features miles of hiking trails winding through majestic redwood groves, eucalyptus trees, and rolling hills.</p>
+      </div>
+      <img class="activity-img" src="images/joaquin-miller.png" alt="Mossy oak trees in Joaquin Miller Park">
+    </div>
+
+    <div class="activity-card fade-in">
+      <div class="activity-text">
+        <h3>Montclair Farmer's Market</h3>
+        <p>Held every Sunday morning, this vibrant market features local farmers selling fresh, seasonal produce, artisan breads, gourmet cheeses, organic eggs, and handmade crafts. If you'd prefer a larger market, check out the Grand Lake Farmer's market on Saturdays.</p>
+      </div>
+      <img class="activity-img" src="images/temescal.png" alt="Temescal Alley shops and cafes">
+    </div>
+
+    <div class="activity-card fade-in">
+      <div class="activity-text">
+        <h3>Temescal Alley</h3>
+        <p>Enjoy a wide array of shops and restaurants in Temescal, one of my favorite neighborhoods to meander through.</p>
+      </div>
+      <div></div>
+    </div>
+  </div>
+
+  <div class="food-section fade-in">
+    <div class="container">
+      <h2>Food &amp; drink</h2>
+      <div class="food-grid">
+        <span class="food-item">Bellanico</span>
+        <span class="food-item">Jo's Modern Thai</span>
+        <span class="food-item">Bird &amp; Buffalo</span>
+        <span class="food-item">MAMA Oakland</span>
+        <span class="food-item">Daughter Thai</span>
+        <span class="food-item">Wood Tavern</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ PAGE 5: THINGS TO DO – MARIN ════════════ -->
+<section class="things-section" id="things-marin">
+  <div class="container">
+    <div class="things-header fade-in">
+      <h2>Things to do</h2>
+      <span class="region">— Marin</span>
+    </div>
+
+    <div class="activity-card fade-in">
+      <div class="activity-text">
+        <h3>Hiking Mt Tamalpais</h3>
+        <p>One of my favorite places in the bay, hiking Mt Tam will take you through many environments and there's no better way to end the day than a sunset from East Peak.</p>
+      </div>
+      <img class="activity-img" src="images/mt-tam.png" alt="Sunset from Mt Tamalpais">
+    </div>
+
+    <div class="activity-card fade-in">
+      <div class="activity-text">
+        <h3>Stinson Beach</h3>
+        <p>Stinson Beach is the quintessential Northern California beach town—laid-back, beautiful, and perfect for a day of sun and surf. Rent a wet suit and boogie boards for an amazing surf experience.</p>
+      </div>
+      <div></div>
+    </div>
+
+    <div class="activity-card fade-in">
+      <div class="activity-text">
+        <h3>Muir Woods</h3>
+        <p>Muir Woods is home to some of the last remaining old-growth coastal redwood forests in the Bay Area. Walking among these ancient trees—some over 1,000 years old and 250 feet tall—is a humbling and awe-inspiring experience. The Cathedral Grove and Bootjack Trail offer accessible paths suitable for all fitness levels.</p>
+      </div>
+      <img class="activity-img" src="images/muir-woods.png" alt="Looking up at towering coastal redwoods in Muir Woods">
+    </div>
+  </div>
+
+  <div class="food-section fade-in">
+    <div class="container">
+      <h2>Food &amp; drink</h2>
+      <div class="food-grid">
+        <span class="food-item">Lappert's Ice Cream</span>
+        <span class="food-item">Sam's Anchor Cafe</span>
+        <span class="food-item">Insalata's</span>
+        <span class="food-item">Buckeye Roadhouse</span>
+        <span class="food-item">Farmshop</span>
+        <span class="food-item">Hog Island Oysters</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ PAGE 6: THINGS TO DO – SAN FRANCISCO ════════════ -->
+<section class="things-section" id="things-sf">
+  <div class="container">
+    <div class="things-header fade-in">
+      <h2>Things to do</h2>
+      <span class="region">— San Francisco</span>
+    </div>
+
+    <div class="activity-card fade-in">
+      <div class="activity-text">
+        <h3>Ferry Building</h3>
+        <p>I love being on the water in the bay and my favorite way of getting to SF's Ferry Building is by Ferry! Once you've arrived enjoy a vibrant marketplace featuring artisan food vendors, farm-fresh produce, and some of the Bay Area's best eateries.</p>
+      </div>
+      <img class="activity-img" src="images/ferry-building.png" alt="San Francisco Ferry Building at twilight">
+    </div>
+
+    <div class="activity-card fade-in">
+      <div class="activity-text">
+        <h3>SF MOMA</h3>
+        <p>A fantastic museum in the heart of San Francisco, featuring works by Frida Kahlo, Jackson Pollock, Andy Warhol, and my favorite, Mark Rothko.</p>
+      </div>
+      <div></div>
+    </div>
+
+    <div class="activity-card fade-in">
+      <div class="activity-text">
+        <h3>Land's End</h3>
+        <p>On the far side of San Francisco, Land's End offers stunning views of the Golden Gate Bridge, the Marin Headlands, and the rugged Pacific coastline. This moderate trail winds through cypress forests, past historic ruins, and along cliffside paths that make you feel miles away from the city while still within its limits.</p>
+      </div>
+      <img class="activity-img" src="images/lands-end.png" alt="View of Golden Gate Bridge from Land's End trail">
+    </div>
+  </div>
+
+  <div class="food-section fade-in">
+    <div class="container">
+      <h2>Food &amp; drink</h2>
+      <div class="food-grid">
+        <span class="food-item">Burma Superstar</span>
+        <span class="food-item">Suppenküche</span>
+        <span class="food-item">Joyride Pizza</span>
+        <span class="food-item">Souvla</span>
+        <span class="food-item">Rooh</span>
+        <span class="food-item">Tartine</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ PAGE 7: FIREPLACE ════════════ -->
+<section class="fireplace-section" id="fireplace">
+  <div class="container">
+    <h2 class="section-title fade-in">Fireplace</h2>
+
+    <div class="usage-box fade-in">
+      <h3>Usage</h3>
+      <div class="usage-steps">
+        <div><strong>Before:</strong> Open the flue</div>
+        <div><strong>During:</strong> Never leave the fire unattended</div>
+        <div><strong>After:</strong> Close the flue, replace firewood, restore items</div>
+      </div>
+    </div>
+
+    <div class="fireplace-grid fade-in">
+      <div class="fire-card">
+        <h4>Firewood</h4>
+        <p>Firewood is stored by the back door at the bottom of the stairs or in the pile along the driveway. Only use wood that is completely dry. If you need to resupply, firewood can be purchased at Lucky's in Montclair.</p>
+      </div>
+      <div class="fire-card">
+        <h4>The Flue</h4>
+        <p>The flue controls the airflow to the chimney. It must be open before lighting your fire and closed before you go to bed. The lever is inside the fireplace on the right and you will feel airflow when it is open. Push the lever up to open the flue. To close, pull the lever down.</p>
+      </div>
+      <div class="fire-card">
+        <h4>The Fire Screen</h4>
+        <p>Once your fire is lit, please close the metal screen. This screen prevents sparks from escaping onto the carpet or furniture.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ PAGE 8: ESPRESSO ════════════ -->
+<section class="espresso-section" id="espresso">
+  <div class="container">
+    <div class="espresso-header fade-in">
+      <h2>Espresso</h2>
+      <span class="machine-name">— Breville Barista Express</span>
+    </div>
+
+    <div class="bilt-notice fade-in">
+      <img src="images/qr-bilt.jpg" alt="QR code for BILT app">
+      <span>Need help? Download the BILT App for interactive tutorials and step-by-step guides.</span>
+    </div>
+
+    <div class="espresso-content fade-in">
+      <div>
+        <div class="good-morning">Good Morning!</div>
+        <div class="daily-steps">
+          <h4>Daily Use</h4>
+          <ol>
+            <li>Fill water tank (back of machine)</li>
+            <li>Add beans to hopper on top</li>
+            <li>Grind into portafilter → tamp → lock in</li>
+            <li>Press 1 CUP or 2 CUP to brew</li>
+            <li>Steam milk (optional): turn steam dial right, wait for light, froth, then turn off</li>
+          </ol>
+        </div>
+      </div>
+      <div></div>
+    </div>
+
+    <div class="maintenance-section fade-in">
+      <h2>Maintenance</h2>
+      <div class="maint-grid">
+        <div class="maint-card">
+          <h4>The Clean Light is Flashing</h4>
+          <ol>
+            <li>Fill water container</li>
+            <li>Drop 1 cleaning tablet in the espresso basket with the rubber plug inserted</li>
+            <li>Turn off machine (if on)</li>
+            <li>Place pitcher under to catch water</li>
+            <li>Hold 1 CUP + 2 CUP buttons for 2 seconds, then hold power until it turns on — the clean light will flash</li>
+            <li>Wait about 5 minutes for the cycle to finish</li>
+          </ol>
+        </div>
+        <div class="maint-card">
+          <h4>The Clean Light is Solid</h4>
+          <ol>
+            <li>Remove the filter</li>
+            <li>Add 4 oz descaler solution to the water tank</li>
+            <li>Hold 2 CUP button, then press power to turn on</li>
+            <li>Manually cycle through all water dispensing options 2–3 times</li>
+            <li>Run plain water through until no vinegar taste remains</li>
+            <li>Replace the filter</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ PAGE 9: THANK YOU ════════════ -->
+<section class="thankyou-section" id="thankyou">
+  <div class="container">
+    <h2 class="fade-in">Thank You for Staying with Us!</h2>
+    <div class="thankyou-grid fade-in">
+      <div class="thankyou-text">
+        <p>We're so grateful you chose to spend your time at 5801 Bagshotte Drive. There's something special about opening our home to thoughtful guests that reminds us why we love this place.</p>
+        <p>We hope you discovered your favorite cozy corner, enjoyed the views, and felt at home here. Whether you savored an espresso on the deck or gathered around the fireplace, we hope those moments made your Bay Area visit memorable.</p>
+        <p>If your stay was wonderful, we'd be deeply grateful for a 5-star review on Airbnb. Honest reviews from guests like you help other travelers find their perfect home and mean the world to us.</p>
+        <p>The Bay Area has so much to offer, and we hope 5801 Bagshotte Drive becomes your home base whenever you're back in Oakland. We'd love to welcome you again.</p>
+        <p>Thank you for treating our home with care and kindness.</p>
+        <div class="about-signature" style="margin-top:16px;">Forrest</div>
+      </div>
+      <img src="images/living-room-wide.jpg" alt="Bright living room with panoramic views">
+    </div>
+  </div>
+
+  <div class="feedback-section fade-in">
+    <div class="container">
+      <h2>Your Feedback Matters</h2>
+      <p>Is there anything we could have done better? Any amenities you'd love to see? Favorite local spots you discovered? We genuinely value your thoughts and suggestions — they help us create an even better experience for future guests and for you when you return. Please email <a href="mailto:forrest@5801bagshotte.com">forrest@5801bagshotte.com</a> and we'll do our best to incorporate your feedback before your next stay.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+// Scroll-triggered fade-in
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
